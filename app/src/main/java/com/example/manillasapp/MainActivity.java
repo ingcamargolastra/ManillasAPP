@@ -2,6 +2,7 @@ package com.example.manillasapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cantidadTabla = findViewById((R.id.txtCantidadTable));
         valorTabla = findViewById((R.id.txtValorTable));
         totalTabla = findViewById((R.id.txtTotalTable));
+
+        //añadimos el MinMaxFilter a cantidad para evitar que ingresen números muy grandes
+        cantidad.setFilters(new InputFilter[]{ new MinMaxFilter("0", "100")});
 
         //añadimos el evento onKey Para Capturar la cantidad de manillas dinámicamente
         cantidad.setOnKeyListener(new View.OnKeyListener() {
