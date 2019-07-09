@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -83,9 +84,51 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         precios[1][1][3] = 80;
     }
 
+    public void calcular(View v){
+        int cant, precio, res=0;
+        if (validar()){}
+    }
+
+    public boolean validar(){
+        if (cantidad.getText().toString().isEmpty()){
+            cantidad.setError(getResources().getString(R.string.error_required));
+            cantidad.requestFocus();
+            return false;
+        }else if(Integer.parseInt(cantidad.getText().toString())==0){
+            cantidad.setError(getResources().getString(R.string.error_0));
+            cantidad.selectAll();
+            return false;
+        }else if(cmbMaterial.getSelectedItemPosition() == 0){
+            ((TextView)cmbMaterial.getSelectedView()).setError(getResources().getString(R.string.material_required));
+            Toast.makeText(this,getResources().getString(R.string.material_required),Toast.LENGTH_LONG).show();
+            return false;
+        }else if(cmbDijes.getSelectedItemPosition() == 0){
+            ((TextView)cmbDijes.getSelectedView()).setError(getResources().getString(R.string.dije_required));
+            Toast.makeText(this,getResources().getString(R.string.dije_required),Toast.LENGTH_LONG).show();
+            return false;
+        }else if(cmbTipos.getSelectedItemPosition() == 0){
+            ((TextView)cmbTipos.getSelectedView()).setError(getResources().getString(R.string.tipo_required));
+            Toast.makeText(this,getResources().getString(R.string.tipo_required),Toast.LENGTH_LONG).show();
+            return false;
+        }else if(cmbMonedas.getSelectedItemPosition() == 0){
+            ((TextView)cmbMonedas.getSelectedView()).setError(getResources().getString(R.string.moneda_required));
+            Toast.makeText(this,getResources().getString(R.string.moneda_required),Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> a, View v, int pos, long l) {
-
+        int posM, posD, posT, resultado, posMoneda, cant;
+        cant = Integer.parseInt(cantidad.getText().toString());
+        posM = cmbMaterial.getSelectedItemPosition()-1;
+        posD = cmbDijes.getSelectedItemPosition()-1;
+        posT = cmbTipos.getSelectedItemPosition()-1;
+        posMoneda = cmbMonedas.getSelectedItemPosition()-1;
+        if (posM >= 0 && posD >= 0 && posT >= 0 && posMoneda >= 0 && cant>0){
+            Toast.makeText(this,""+precios[posM][posD][posT],Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

@@ -19,6 +19,12 @@
     <string name="dolar">Dolar</string>
     <string name="peso_colombiano">Pesos Colombianos</string>
     <string name="seleccione">-- Seleccione una opción --</string>
+    <string name="error_required">Digite la cantidad de manillas</string>
+    <string name="material_required">Seleccione un material</string>
+    <string name="dije_required">Seleccione un dije</string>
+    <string name="tipo_required">Seleccione un tipo</string>
+    <string name="moneda_required">Seleccione una moneda</string>
+    <string name="error_0">La cantidad de manillas no puede ser cero</string>
     <string-array name="materiales">
         <item>@string/seleccione</item>
         <item>@string/cuero</item>
