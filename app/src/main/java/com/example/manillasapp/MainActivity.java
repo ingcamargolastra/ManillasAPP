@@ -2,12 +2,14 @@ package com.example.manillasapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText cantidad;
     TextView valor, total;
@@ -28,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         cmbDijes = findViewById(R.id.cmbDije);
         cmbTipos = findViewById(R.id.cmbTipos);
         cmbMonedas = findViewById(R.id.cmbMonedas);
+
+        //Añadimos el evento a cada combo
+        cmbMaterial.setOnItemSelectedListener(this);
+        cmbDijes.setOnItemSelectedListener(this);
+        cmbTipos.setOnItemSelectedListener(this);
+        cmbMonedas.setOnItemSelectedListener(this);
 
         //Traemos los materiales, dijes, tipos y monedas en Arrays
         materiales = getResources().getStringArray(R.array.materiales);
@@ -73,5 +81,15 @@ public class MainActivity extends AppCompatActivity {
         precios[1][1][1] = 110;
         precios[1][1][2] = 90;
         precios[1][1][3] = 80;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> a, View v, int pos, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
