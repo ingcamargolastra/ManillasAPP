@@ -8,4 +8,37 @@
     <string name="label_moneda">Moneda</string>
     <string name="label_limpiar">Limpiar</string>
     <string name="label_calcular">Calcular</string>
+    <string name="cuero">Cuero</string>
+    <string name="cuerda">Cuerda</string>
+    <string name="martillo">Martillo</string>
+    <string name="ancla">Ancla</string>
+    <string name="oro">Oro</string>
+    <string name="oro_rosado">Oro Rosado</string>
+    <string name="plata">Plata</string>
+    <string name="niquel">Niquel</string>
+    <string name="dolar">Dolar</string>
+    <string name="peso_colombiano">Pesos Colombianos</string>
+    <string name="seleccione">-- Seleccione una opción --</string>
+    <string-array name="materiales">
+        <item>@string/seleccione</item>
+        <item>@string/cuero</item>
+        <item>@string/cuerda</item>
+    </string-array>
+    <string-array name="dijes">
+        <item>@string/seleccione</item>
+        <item>@string/martillo</item>
+        <item>@string/ancla</item>
+    </string-array>
+    <string-array name="tipos">
+        <item>@string/seleccione</item>
+        <item>@string/oro</item>
+        <item>@string/oro_rosado</item>
+        <item>@string/plata</item>
+        <item>@string/niquel</item>
+    </string-array>
+    <string-array name="monedas">
+        <item>@string/seleccione</item>
+        <item>@string/dolar</item>
+        <item>@string/peso_colombiano</item>
+    </string-array>
 </resources>
