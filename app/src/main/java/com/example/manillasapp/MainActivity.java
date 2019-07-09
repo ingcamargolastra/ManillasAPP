@@ -11,14 +11,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText cantidad;
     TextView cantidadTabla, valorTabla, totalTabla;
     String materiales[], dijes[], tipos[], monedas[];
     Spinner cmbMaterial, cmbDijes, cmbTipos, cmbMonedas;
-    int valorDolar;
+    int valorDolar, valorUnitario;
     int precios[][][] = new int[2][2][4];
+    NumberFormat format = NumberFormat.getCurrencyInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +106,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void calcular(View v){
-        int cant, precio, res=0;
+        int cant, res=0;
         if (validar()){
             cant = Integer.parseInt(cantidad.getText().toString());
-            precio = Integer.parseInt(valorTabla.getText().toString());
-            res = cant * precio;
-            totalTabla.setText(""+res);
+            res = cant * valorUnitario;
+            totalTabla.setText(""+format.format(res));
         }
     }
 
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> a, View v, int pos, long l) {
-        int posM, posD, posT, resultado, posMoneda;
+        int posM, posD, posT, posMoneda;
         posM = cmbMaterial.getSelectedItemPosition()-1;
         posD = cmbDijes.getSelectedItemPosition()-1;
         posT = cmbTipos.getSelectedItemPosition()-1;
@@ -185,11 +187,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (posM >= 0 && posD >= 0 && posT >= 0 && posMoneda >= 0 ){
             if (posMoneda == 0){
                 cantidadTabla.setText(""+cantidad.getText().toString());
-                valorTabla.setText(""+precios[posM][posD][posT]);
+                valorUnitario = precios[posM][posD][posT];
+                valorTabla.setText(""+format.format(valorUnitario));
             }else if(posMoneda == 1){
                 cantidadTabla.setText(""+cantidad.getText().toString());
-                resultado = precios[posM][posD][posT]*valorDolar;
-                valorTabla.setText(""+resultado);
+                valorUnitario = precios[posM][posD][posT]*valorDolar;
+                valorTabla.setText(""+format.format(valorUnitario));
             }
             //Toast.makeText(this,""+cantidad.getText(),Toast.LENGTH_LONG).show();
         }else if (posM == 0 || posD == 0 || posT == 0 || posMoneda == 0){
