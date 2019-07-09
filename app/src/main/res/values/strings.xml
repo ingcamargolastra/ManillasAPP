@@ -28,6 +28,7 @@
     <string name="label_cantidad_table">Cantidad</string>
     <string name="label_valor_table">Valor</string>
     <string name="label_total_table">Total</string>
+    <string name="valor_dolar">3200</string>
     <string-array name="materiales">
         <item>@string/seleccione</item>
         <item>@string/cuero</item>

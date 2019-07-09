@@ -2,6 +2,7 @@ package com.example.manillasapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,9 +14,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText cantidad;
-    TextView valor, total;
+    TextView cantidadTabla, valorTabla, totalTabla;
     String materiales[], dijes[], tipos[], monedas[];
     Spinner cmbMaterial, cmbDijes, cmbTipos, cmbMonedas;
+    int valorDolar;
     int precios[][][] = new int[2][2][4];
 
     @Override
@@ -25,12 +27,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //llamamos la función para inicializar los precios de las manillas
         inicializarPrecios();
 
+        //traemos el precio del dolar
+        valorDolar = Integer.parseInt(getResources().getString(R.string.valor_dolar));
+
         //capturamos los objetos utilizados
         cantidad = findViewById(R.id.txtCantidad);
         cmbMaterial = (Spinner)findViewById(R.id.cmbMaterial);
         cmbDijes = findViewById(R.id.cmbDije);
         cmbTipos = findViewById(R.id.cmbTipos);
         cmbMonedas = findViewById(R.id.cmbMonedas);
+        cantidadTabla = findViewById((R.id.txtCantidadTable));
+        valorTabla = findViewById((R.id.txtValorTable));
+        totalTabla = findViewById((R.id.txtTotalTable));
+
+        //añadimos el evento onKey Para Capturar la cantidad de manillas dinámicamente
+        cantidad.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                cantidadTabla.setText(""+cantidad.getText().toString());
+                totalTabla.setText("");
+                return false;
+            }
+        });
 
         //Añadimos el evento a cada combo
         cmbMaterial.setOnItemSelectedListener(this);
@@ -86,7 +104,39 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void calcular(View v){
         int cant, precio, res=0;
-        if (validar()){}
+        if (validar()){
+            cant = Integer.parseInt(cantidad.getText().toString());
+            precio = Integer.parseInt(valorTabla.getText().toString());
+            res = cant * precio;
+            totalTabla.setText(""+res);
+        }
+    }
+
+    public void limpiar(View v){
+        initializeSpinners();
+        clearErrorSpinners();
+        clearTable();
+        clearCantidad();
+    }
+
+    public void clearCantidad(){
+        cantidad.setText("");
+        cantidad.requestFocus();
+        cantidad.setError(null);
+    }
+
+    public void initializeSpinners(){
+        cmbMaterial.setSelection(0);
+        cmbDijes.setSelection(0);
+        cmbTipos.setSelection(0);
+        cmbMonedas.setSelection(0);
+    }
+
+    public void clearErrorSpinners(){
+        ((TextView)cmbMaterial.getSelectedView()).setError(null);
+        ((TextView)cmbDijes.getSelectedView()).setError(null);
+        ((TextView)cmbTipos.getSelectedView()).setError(null);
+        ((TextView)cmbMonedas.getSelectedView()).setError(null);
     }
 
     public boolean validar(){
@@ -118,16 +168,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
+    private void clearTable(){
+        cantidadTabla.setText("");
+        valorTabla.setText("");
+        totalTabla.setText("");
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> a, View v, int pos, long l) {
-        int posM, posD, posT, resultado, posMoneda, cant;
-        cant = Integer.parseInt(cantidad.getText().toString());
+        int posM, posD, posT, resultado, posMoneda;
         posM = cmbMaterial.getSelectedItemPosition()-1;
         posD = cmbDijes.getSelectedItemPosition()-1;
         posT = cmbTipos.getSelectedItemPosition()-1;
         posMoneda = cmbMonedas.getSelectedItemPosition()-1;
-        if (posM >= 0 && posD >= 0 && posT >= 0 && posMoneda >= 0 && cant>0){
-            Toast.makeText(this,""+precios[posM][posD][posT],Toast.LENGTH_LONG).show();
+        totalTabla.setText("");
+        if (posM >= 0 && posD >= 0 && posT >= 0 && posMoneda >= 0 ){
+            if (posMoneda == 0){
+                cantidadTabla.setText(""+cantidad.getText().toString());
+                valorTabla.setText(""+precios[posM][posD][posT]);
+            }else if(posMoneda == 1){
+                cantidadTabla.setText(""+cantidad.getText().toString());
+                resultado = precios[posM][posD][posT]*valorDolar;
+                valorTabla.setText(""+resultado);
+            }
+            //Toast.makeText(this,""+cantidad.getText(),Toast.LENGTH_LONG).show();
+        }else if (posM == 0 || posD == 0 || posT == 0 || posMoneda == 0){
+            valorTabla.setText("");
+            totalTabla.setText("");
         }
     }
 
