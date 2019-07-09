@@ -25,6 +25,9 @@
     <string name="tipo_required">Seleccione un tipo</string>
     <string name="moneda_required">Seleccione una moneda</string>
     <string name="error_0">La cantidad de manillas no puede ser cero</string>
+    <string name="label_cantidad_table">Cantidad</string>
+    <string name="label_valor_table">Valor</string>
+    <string name="label_total_table">Total</string>
     <string-array name="materiales">
         <item>@string/seleccione</item>
         <item>@string/cuero</item>

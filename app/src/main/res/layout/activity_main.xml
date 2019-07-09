@@ -86,6 +86,86 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espacio_up">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:text="@string/label_cantidad_table"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:text="@string/label_valor_table"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:text="@string/label_total_table"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtCantidadTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/coloRowTable"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtValorTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/coloRowTable"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtTotalTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/coloRowTable"
+                    android:paddingLeft="@dimen/espacio_left"
+                    android:textStyle="bold" />
+            </TableRow>
+
+        </TableLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,6 +186,8 @@
                 android:onClick="calcular"
                 android:text="@string/label_calcular" />
         </LinearLayout>
+
+
 
     </LinearLayout>
 
