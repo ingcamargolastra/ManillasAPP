@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         totalTabla = findViewById((R.id.txtTotalTable));
 
         //añadimos el MinMaxFilter a cantidad para evitar que ingresen números muy grandes
-        cantidad.setFilters(new InputFilter[]{ new MinMaxFilter("0", "100")});
+        cantidad.setFilters(new InputFilter[]{ new MinMaxFilter(getResources().getString(R.string.min_value_cantidad), getResources().getString(R.string.max_value_cantidad))});
 
         //añadimos el evento onKey Para Capturar la cantidad de manillas dinámicamente
         cantidad.setOnKeyListener(new View.OnKeyListener() {

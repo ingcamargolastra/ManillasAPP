@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ManillasAPP</string>
+    <string name="app_name">Manillas APP</string>
     <string name="titulo">Venta de Manillas</string>
     <string name="label_cantidad">Digite la cantidad de manillas</string>
     <string name="label_material">Material</string>
@@ -9,7 +9,6 @@
     <string name="label_limpiar">Limpiar</string>
     <string name="label_calcular">Calcular</string>
     <string name="cuero">Cuero</string>
-    <string name="cuerda">Cuerda</string>
     <string name="martillo">Martillo</string>
     <string name="ancla">Ancla</string>
     <string name="oro">Oro</string>
@@ -29,6 +28,8 @@
     <string name="label_valor_table">Valor</string>
     <string name="label_total_table">Total</string>
     <string name="valor_dolar">3200</string>
+    <string name="min_value_cantidad">0</string>
+    <string name="max_value_cantidad">100</string>
     <string-array name="materiales">
         <item>@string/seleccione</item>
         <item>@string/cuero</item>
@@ -51,4 +52,5 @@
         <item>@string/dolar</item>
         <item>@string/peso_colombiano</item>
     </string-array>
+    <string name="cuerda">Cuerda</string>
 </resources>

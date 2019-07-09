@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Handles APP</string>
+    <string name="ancla">Anchor</string>
+    <string name="cuerda">Rope</string>
+    <string name="cuero">Leather</string>
+    <string name="dije_required">Select a pendant</string>
+    <string name="dolar">Dollar</string>
+    <string name="error_0">The number of handles can not be zero</string>
+    <string name="error_required">Type the quantity of handles</string>
+    <string name="label_calcular">Calculate</string>
+    <string name="label_cantidad">Type the amount of handles</string>
+    <string name="label_cantidad_table">Quantity</string>
+    <string name="label_dije">Pendant</string>
+    <string name="label_limpiar">Clear</string>
+    <string name="label_material">Material</string>
+    <string name="label_moneda">Currency</string>
+    <string name="label_tipo">Type</string>
+    <string name="label_total_table">Total</string>
+    <string name="label_valor_table">Unit Value</string>
+    <string name="martillo">Hammer</string>
+    <string name="material_required">Select a material</string>
+    <string name="max_value_cantidad">100</string>
+    <string name="min_value_cantidad">0</string>
+    <string name="moneda_required">Select a currency</string>
+    <string name="niquel">Nickel</string>
+    <string name="oro">Gold</string>
+    <string name="oro_rosado">Pink gold</string>
+    <string name="peso_colombiano">COP</string>
+    <string name="plata">Silver</string>
+    <string name="seleccione">-- Choose an option --</string>
+    <string name="tipo_required">Select a type</string>
+    <string name="titulo">Handles Sale</string>
+    <string name="valor_dolar">3200</string>
+</resources>
